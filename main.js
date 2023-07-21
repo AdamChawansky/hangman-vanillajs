@@ -4,23 +4,13 @@ const wordToGuess = 'WATERMELON';
 const guesses = []; // ['a', 'b']
 
 function updateHangman() {
-  const wrongGuess = guesses.reduce((accumulator, char) => {
-    if(!wordToGuess.includes(char)) {
-        accumulator++
-    }
-    return accumulator;
-  }, 0);
+  const wrongGuess = guesses.filter(c => !wordToGuess.includes(c)).length;
   document.getElementById('count').innerText = wrongGuess;
 
   // Construct a string of KNOWN letters
-  const currentState = [];
-  for (let i = 0; i < wordToGuess.length; i++) {
-    if (guesses.includes(wordToGuess[i])) {
-        currentState.push(wordToGuess[i]);
-    } else {
-        currentState.push('_');
-    }
-  }
+  const currentState = wordToGuess
+    .split('')
+    .map(c => guesses.includes(c) ? c : '_');
 	document.getElementById('solution').innerText = currentState.join("");
 }
 
