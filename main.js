@@ -11,18 +11,16 @@ function updateHangman() {
   const currentState = wordToGuess
     .split('')
     .map(c => guesses.includes(c) ? c : '_');
-	document.getElementById('solution').innerText = currentState.join("");
+	document.getElementById('solution').innerText = currentState.join(" ");
 }
 
 function generateButton(char) {
   const newButton = document.createElement('button');
   newButton.innerText = char;
   newButton.addEventListener('click', () => {
-    console.log(char);
-    if (!guesses.includes(char)) {
-        guesses.push(char);
-        updateHangman();
-    }
+    guesses.push(char);
+    updateHangman();
+    newButton.disabled = true;
   });
   document.getElementById('buttons').appendChild(newButton);
 }
@@ -30,6 +28,13 @@ function generateButton(char) {
 function setupPage() {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   alphabet.split('').forEach(char => generateButton(char));
+  updateHangman();
 }
 
 setupPage();
+
+/* Homework:
+  Add button that changes the word to guess
+  Figure out the picture (use # wrong to decide what to draw, save JPGs)
+  
+*/
