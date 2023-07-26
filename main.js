@@ -29,7 +29,7 @@ function updateHangman() {
 	document.getElementById('solution').innerText = currentState.join(" ");
 
   // Draw the picture
-  const imageURL = `h${wrongGuess}.png`;
+  const imageURL = `images/h${wrongGuess}.png`;
   const hangmanPicture = document.getElementById('picture');
   hangmanPicture.src = imageURL;
 
