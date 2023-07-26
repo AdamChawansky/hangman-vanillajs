@@ -37,9 +37,9 @@ function updateHangman() {
   const hasWon = wordToGuess === guessedWord.join('');   // If you guessed all the letters, display WIN
   const hasLost = wrongGuess >= MAX_WRONG;  // If you reached MAX_WRONG, display LOSE
   if (hasWon) {
-    statusElm.innerText = 'YOU WIN!'
+    statusElm.innerText = 'YOU WIN!';
   } else if (hasLost) {
-    statusElm.innerText = 'YOU LOSE!'
+    statusElm.innerText = 'YOU LOSE!';
   }
   if (hasWon || hasLost) {
     const buttons = document.getElementsByClassName('letter_button');
@@ -67,9 +67,9 @@ function setupPage() {
 setupPage();
 
 /* Homework:
-  Add button that changes the word to guess
-  Figure out the picture (use # wrong to decide what to draw, save JPGs)
-  Split into multiple JS files
-    - how to import multiple JS files
-    - variable access
+  CSS styling
+  - buttons in 4 rows of 7 (without changing JS code)
+  - make it a mobile version
+  Port to TypeScript (.ts) or React (.jsx)
+  - run code through WebPack or Babble to translate code into JS
 */
