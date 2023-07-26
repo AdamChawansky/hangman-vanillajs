@@ -1,4 +1,3 @@
-const dictionary = ['WATERMELON', 'VIRTUAL REALITY', 'THE ART OF WAR', 'CORRELATION IS NOT CAUSATION', 'BEAUTY IS SKIN DEEP', 'BEND WITH YOUR KNEES', 'HOTEL CALIFORNIA', 'WASH YOUR HANDS', 'PARALLEL PARKING', 'VENUS FLY TRAP', 'GOD CREATED THE INTEGERS', 'ABRACADABRA', 'PETE THE CAT', 'WINTER IS COMING', 'KEEP YOUR FRIENDS CLOSE', 'AMERICA THE BEAUTIFUL']
 let wordToGuess = '';
 let guesses = [];
 const MAX_WRONG = 6;
@@ -46,18 +45,6 @@ function updateHangman() {
     const buttons = document.getElementsByClassName('letter_button');
     Array.from(buttons).forEach(element => element.disabled = true);
   }
-}
-
-function generateButton(char) {
-  const newButton = document.createElement('button');
-  newButton.innerText = char;
-  newButton.classList.add('letter_button');
-  newButton.addEventListener('click', () => {
-    guesses.push(char);
-    updateHangman();
-    newButton.disabled = true;
-  });
-  document.getElementById('buttons').appendChild(newButton);
 }
 
 function setupPage() {
