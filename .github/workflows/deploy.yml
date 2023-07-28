@@ -38,11 +38,11 @@ jobs:
 
       # Cleanup unused files
       - name: Prep for Deploy
-        run: 
-          - mkdir deploy
-            mv dist deploy/dist
-            mv images deploy/images
-            mv index.html deploy/index.html
+        run: |
+              mkdir deploy
+              mv dist deploy/dist
+              mv images deploy/images
+              mv index.html deploy/index.html
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
