@@ -36,9 +36,17 @@ jobs:
           CI: false
         run: npm run build
 
+      # Cleanup unused files
+      - name: Prep for Deploy
+        run: 
+          - mkdir deploy
+            mv dist deploy/dist
+            mv images deploy/images
+            mv index.html deploy/index.html
+
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: '.' # The folder the action should deploy.
+          FOLDER: deploy # The folder the action should deploy.
