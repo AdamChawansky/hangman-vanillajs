@@ -14,7 +14,7 @@
 # use nvm to get node and npm working
 nvm use $(cat .\.nvmrc)
 
-# run the build script defined in package.json to generate our JS files in local /dist
+# run the build script defined in package.json to generate our JS files
 npm run build
 
 ```
