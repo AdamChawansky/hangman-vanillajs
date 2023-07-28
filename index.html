@@ -1,0 +1,35 @@
+<head>
+  <title>
+    Hangman VanillaJS
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script defer src="dist/dictionary.js"></script>
+  <script defer src="dist/setup.js"></script>
+  <script defer src="dist/main.js"></script>
+</head>
+<body>
+  <h1>
+    Let's play hangman!
+  </h1>
+  <div>
+    <!-- set by js -->
+    <img id="picture" src="" alt="Hangman Picture">
+  </div>
+  <div id="buttons">
+    Guess a letter: 
+  </div>
+  <div>
+    # of Wrong Guesses: <span id="count">
+      <!-- set by js -->
+    </span>
+  </div>
+  <h2 id="solution">
+    <!-- set by js -->
+  </h2>
+  <h2 id="game_status">
+    <!-- set by js -->
+  </h2>
+  <div id="reset_word">
+    <!-- set by js -->
+  </div>
+</body>

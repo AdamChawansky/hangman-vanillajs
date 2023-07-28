@@ -1,0 +1,14 @@
+{
+  "name": "hangman-typescript",
+  "version": "1.0.0",
+  "description": "Baby's first typescript",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Adam Chawansky (ghost-written by MPW)",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
