@@ -1,4 +1,4 @@
-export function generateButton(char: string) {
+function generateButton(char: string) {
   const newButton = document.createElement('button');
   newButton.innerText = char;
   newButton.classList.add('letter_button');

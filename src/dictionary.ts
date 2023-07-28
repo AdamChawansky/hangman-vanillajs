@@ -1,4 +1,4 @@
-export const dictionary = [
+const dictionary = [
   'WATERMELON',
   'VIRTUAL REALITY',
   'THE ART OF WAR',
