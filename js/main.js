@@ -70,6 +70,8 @@ setupPage();
   CSS styling
   - buttons in 4 rows of 7 (without changing JS code)
   - make it a mobile version
+  - not allowed to use float
   Port to TypeScript (.ts) or React (.jsx)
   - run code through WebPack or Babble to translate code into JS
+  Automate dictionary file using API
 */
