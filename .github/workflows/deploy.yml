@@ -41,6 +41,7 @@ jobs:
         run: |
               mkdir deploy
               mv dist deploy/dist
+              mv data deploy/data
               mv images deploy/images
               mv index.html deploy/index.html
 
