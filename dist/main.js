@@ -1,8 +1,18 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 let wordToGuess = '';
 let guesses = [];
 const MAX_WRONG = 6;
 const statusElm = document.getElementById('game_status');
+const dictionary = [];
 function startGame() {
     wordToGuess = dictionary[Math.floor(dictionary.length * Math.random())];
     guesses = []; // ['a', 'b']
@@ -41,19 +51,31 @@ function updateHangman() {
         Array.from(buttons).forEach(element => element.disabled = true);
     }
 }
+function fetchDictionary() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield fetch("data/dictionary.txt");
+        const text = yield response.text();
+        const newDictionary = text.trim().split("\n").map(line => line.trim());
+        dictionary.push(...newDictionary);
+    });
+}
 function setupPage() {
-    // Create buttons to guess letters
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    alphabet.split('').forEach(char => generateButton(char));
-    // Create button to start with a new word
-    const newButton = document.createElement('button');
-    newButton.innerText = 'New Game';
-    newButton.addEventListener('click', () => {
-        // location.reload(); // cheating way by reloading the webpage
+    return __awaiter(this, void 0, void 0, function* () {
+        // wait for fetchDictionary
+        yield fetchDictionary();
+        // Create buttons to guess letters
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        alphabet.split('').forEach(char => generateButton(char));
+        // Create button to start with a new word
+        const newButton = document.createElement('button');
+        newButton.innerText = 'New Game';
+        newButton.addEventListener('click', () => {
+            // location.reload(); // cheating way by reloading the webpage
+            startGame();
+        });
+        document.getElementById('reset_word').appendChild(newButton);
         startGame();
     });
-    document.getElementById('reset_word').appendChild(newButton);
-    startGame();
 }
 setupPage();
 /* Homework:
