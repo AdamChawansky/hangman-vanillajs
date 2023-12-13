@@ -2,6 +2,7 @@ let wordToGuess = '';
 let guesses: string[] = [];
 const MAX_WRONG = 6;
 const statusElm = document.getElementById('game_status')!;
+const dictionary: string[] = [];
 
 function startGame() {
   wordToGuess = dictionary[Math.floor(dictionary.length * Math.random())];
@@ -47,7 +48,17 @@ function updateHangman() {
   }
 }
 
-function setupPage() {
+async function fetchDictionary() {
+  const response = await fetch("data/dictionary.txt");
+  const text = await response.text();
+  const newDictionary = text.trim().split("\n").map(line => line.trim());
+  dictionary.push(...newDictionary);
+}
+
+async function setupPage() {
+  // wait for fetchDictionary
+  await fetchDictionary();
+
   // Create buttons to guess letters
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   alphabet.split('').forEach(char => generateButton(char));
